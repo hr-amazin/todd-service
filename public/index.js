@@ -1,0 +1,16 @@
+// import React from 'react';
+// import ReactDOM from 'react-dom'
+// console.log(React);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return React.createElement("div", null, React.createElement("h2", null, "component1 "), React.createElement("div", null, "Tester "));
+  }
+
+}
+
+ReactDOM.render(React.createElement(App, null), document.getElementById('start'));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvbXBvbmVudHMvaW5kZXguanN4Il0sIm5hbWVzIjpbIkFwcCIsIlJlYWN0IiwiQ29tcG9uZW50IiwiY29uc3RydWN0b3IiLCJwcm9wcyIsInJlbmRlciIsIlJlYWN0RE9NIiwiZG9jdW1lbnQiLCJnZXRFbGVtZW50QnlJZCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUVBO0FBRUEsTUFBTUEsR0FBTixTQUFrQkMsS0FBSyxDQUFDQyxTQUF4QixDQUFrQztBQUVoQ0MsRUFBQUEsV0FBVyxDQUFDQyxLQUFELEVBQU87QUFDaEIsVUFBTUEsS0FBTjtBQUNEOztBQUVEQyxFQUFBQSxNQUFNLEdBQUU7QUFDTixXQUNBLGlDQUNFLDhDQURGLEVBRUUsMkNBRkYsQ0FEQTtBQUtEOztBQVorQjs7QUFpQmxDQyxRQUFRLENBQUNELE1BQVQsQ0FBZ0Isb0JBQUMsR0FBRCxPQUFoQixFQUF3QkUsUUFBUSxDQUFDQyxjQUFULENBQXdCLE9BQXhCLENBQXhCIiwic291cmNlc0NvbnRlbnQiOlsiLy8gaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0Jztcbi8vIGltcG9ydCBSZWFjdERPTSBmcm9tICdyZWFjdC1kb20nXG5cbi8vIGNvbnNvbGUubG9nKFJlYWN0KTtcblxuY2xhc3MgQXBwIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcblxuICBjb25zdHJ1Y3Rvcihwcm9wcyl7XG4gICAgc3VwZXIocHJvcHMpO1xuICB9XG5cbiAgcmVuZGVyKCl7XG4gICAgcmV0dXJuIChcbiAgICA8ZGl2PlxuICAgICAgPGgyPmNvbXBvbmVudDEgPC9oMj4gXG4gICAgICA8ZGl2PlRlc3RlciA8L2Rpdj5cbiAgICA8L2Rpdj4pXG4gIH1cblxufVxuXG5cblJlYWN0RE9NLnJlbmRlcig8QXBwLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzdGFydCcpKTsiXX0=
