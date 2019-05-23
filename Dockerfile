@@ -1,5 +1,5 @@
 # Start from base
-FROM node:alpine 
+FROM node:8.11.2-alpine 
 
 # make the directory on the Alpine Linux machine 
 RUN mkdir -p /usr/src/app
@@ -11,10 +11,11 @@ WORKDIR /usr/src/app
 COPY . . 
 
 # fetch app specific dependencies 
+RUN npm install git -g
 RUN npm install
 
 # expose port
 EXPOSE 4000
 
 # start run with this command
-CMD [ "node", "server.js"]
+CMD [ "node", "./server/index.js"]
