@@ -57,10 +57,9 @@ class Reviews extends React.Component {
     return (
       <>
         <h2 className='Reviews'> Reviews and Ratings </h2>
-          { reviews.map(review => <EachReview review={ review } /> )}
+          { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
       </>
     )}
 
 }
-
-ReactDOM.render(<Reviews/>, document.getElementById('footer'));
+ReactDOM.render(<Reviews/>, document.getElementById('reviews'));
