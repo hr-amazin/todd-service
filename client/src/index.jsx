@@ -17,23 +17,43 @@ class Reviews extends React.Component {
   componentDidMount() { 
     axios.get('/api/oneReview', { 
       params: { 
-        uuid: 1090
+        uuid: 1001
       }
     })
-    .then(data => { 
-      console.log(`reviews procured db!`) 
+    .then(reviews => { 
+      // console.log(`reviews procured db!`, reviews.data) 
       this.setState({ 
-        uuid: data.data
+        uuid: reviews.data
+      }, () => { 
+        console.log('fetched data', this.state)  
       })
     })
     .catch(err => console.log(`error retrieving reviews`))
-  }
+  } 
+
+  // componentDidUpdate(prevProps) { 
+  //   if (this.props.uuid !== prevProps.uuid) { 
+  //     axios.get('/api/oneReview', { 
+  //       params: { 
+  //         uuid: this.props.uuid
+  //       }
+  //     })
+  //     .then(review => { 
+  //       console.log(`reviews procured db!`) 
+  //       this.setState({ 
+  //         uuid: review.data
+  //       })
+  //     })
+  //     .catch(err => console.log(`error retrieving reviews`))
+  //   }
+  // }
 
   render(){  
+    const { uuid } = this.state;
     return (
       <>
         <h2 className='Reviews'> Reviews and Ratings </h2>
-          { this.state.uuid.map(review => <EachReview review={ review } /> )}
+          { uuid.map(review => <EachReview review={ review } /> )}
       </>
     )}
 

@@ -15,7 +15,7 @@ const getOneRev = (reviewUUID) => {
   return knex('review').where({ 
     uuid: reviewUUID
     }).select()
-    // .then(() => console.log(`reviews retrieved`))
+    // .then(() => console.log())
     .catch((err => err))
 } 
 
