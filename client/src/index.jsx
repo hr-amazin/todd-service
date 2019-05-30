@@ -20,9 +20,10 @@ class Reviews extends React.Component {
       }
     })
     .then(reviews => { 
-      // console.log(`reviews procured db!`, reviews.data) 
+      // console.log(`reviews procured db!`, reviews.data[0].uuid) 
       this.setState({ 
-        reviews: reviews.data
+        reviews: reviews.data, 
+        uuid: reviews.data[0].uuid
       })
     })
     .catch(err => console.log(`error retrieving reviews`))
