@@ -20,9 +20,8 @@ app.get('/api/oneReview', (req, res) => {
   // console.log(reviewUUID, `log on server side`)
   db.getOneRev(reviewUUID) 
   // console.log(reviewUUID) 
-    .then(review => { 
-      // console.log(review)  
-      res.send(review)
+    .then(reviews => { 
+      res.send(reviews)
       // console.log(reviews, `reviews on server`)
     })
     .catch(err => console.log(err, `err retrieving reviews`))
