@@ -14,7 +14,7 @@ class Reviews extends React.Component {
   } 
 
   componentDidMount() { 
-    axios.get('/api/oneReview', { 
+    axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
       params: { 
         uuid: 1001
       }
@@ -36,15 +36,16 @@ class Reviews extends React.Component {
     //   })
     // } 
     if (this.props.uuid !== prevProps.uuid) { 
-      axios.get('/api/oneReview', { 
+      axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
         params: { 
           uuid: this.props.uuid
         }
       })
       .then(reviews => { 
-        // console.log(`reviews procured db!`) 
+        // console.log(`reviews procured db!`, reviews.data[0].uuid) 
         this.setState({ 
-          uuid: reviews.data
+          reviews: reviews.data, 
+          uuid: reviews.data[0].uuid
         })
       })
       .catch(err => console.log(`error retrieving reviews`))
@@ -62,4 +63,5 @@ class Reviews extends React.Component {
     )}
 
 }
-ReactDOM.render(<Reviews/>, document.getElementById('reviews'));
+window.Reviews = Reviews;
+// ReactDOM.render(<Reviews/>, document.getElementById('reviews'));
