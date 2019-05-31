@@ -14,7 +14,8 @@ class Reviews extends React.Component {
   } 
 
   componentDidMount() { 
-    axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
+    axios.get('api/oneReview', { 
+      // axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
       params: { 
         uuid: 1001
       }
@@ -57,7 +58,7 @@ class Reviews extends React.Component {
 
     return (
       <>
-        <h2 className='Reviews'> Reviews and Ratings </h2>
+        <h2 className='reviews'> Reviews and Ratings </h2>
           { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
       </>
     )}

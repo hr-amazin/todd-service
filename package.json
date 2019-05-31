@@ -19,7 +19,9 @@
     "knex": "^0.16.5",
     "pg": "^7.11.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-star-ratings": "^2.3.0",
+    "styled-components": "^4.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
