@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom'; 
 import EachReview from './eachReview.jsx'; 
+import { compareReviewRating } from '../helpers/helperFuncs.js'
 import axios from 'axios'; 
 
 class Reviews extends React.Component {
@@ -14,8 +15,8 @@ class Reviews extends React.Component {
   } 
 
   componentDidMount() { 
-    axios.get('api/oneReview', { 
-      // axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
+    // axios.get('api/oneReview', { 
+    axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
       params: { 
         uuid: 1001
       }
@@ -53,12 +54,29 @@ class Reviews extends React.Component {
     }
   }
 
+  handleChange(e) { 
+    if ( e.target.value === 'Most Recent') { 
+
+    }
+    
+  }
+
   render(){  
     const { reviews } = this.state; 
+    console.log(reviews.sort(compareReviewRating));
 
-    return (
+    return ( 
+      
       <>
-        <h2 className='reviews'> Reviews and Ratings </h2>
+        <h4 className='reviews'> Showing 1-{reviews.length} of {reviews.length} reviews </h4>
+        <div className='sortForm'>
+          <form>
+            <select onChange={this.handleChange}> 
+              <option value='Top Reviews'>Top Reviews</option>
+              <option value='Most Recent'>Most Recent</option>
+            </select>
+          </form>
+        </div>
           { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
       </>
     )}

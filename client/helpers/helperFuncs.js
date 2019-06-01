@@ -1,5 +1,7 @@
 
 const convertDate = (date) => { 
+  // console.log(date);
+  
   let formattedDate;
   date.slice(0, 10); 
 
@@ -29,4 +31,14 @@ const convertDate = (date) => {
   return formattedDate;
 } 
 
-export default convertDate;
+const compareReviewRating = (a, b) => { 
+  const aStars = a.stars; 
+  const bStars = b.stars; 
+
+  let comparison = 0; 
+  if (aStars < bStars) { comparison = 1; } 
+  else if (aStars > bStars) { comparison = -1; } 
+  return comparison; 
+}
+
+export { convertDate, compareReviewRating } ;
