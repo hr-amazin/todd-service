@@ -39,6 +39,18 @@ const compareReviewRating = (a, b) => {
   if (aStars < bStars) { comparison = 1; } 
   else if (aStars > bStars) { comparison = -1; } 
   return comparison; 
+} 
+
+const getAvgRating = (arrOfObjs) => { 
+  let avgRating = 0; 
+
+  arrOfObjs.forEach(review => {
+    // console.log(review.stars);
+    
+    avgRating += review.stars; 
+  });
+  avgRating = avgRating / arrOfObjs.length; 
+  return avgRating;
 }
 
-export { convertDate, compareReviewRating } ;
+export { convertDate, compareReviewRating, getAvgRating } ;

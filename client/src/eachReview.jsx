@@ -1,17 +1,19 @@
 import React from 'react'; 
 import { convertDate } from '../helpers/helperFuncs'; 
-import StarRatings from 'react-star-ratings';
+import StarRatings from 'react-star-ratings'; 
+import styles from '../../public/Reviews.css'
 
 const  EachReview = ({ review }) => { 
-  review.revDate = convertDate(review.revDate)
+  review.formattedDate = convertDate(review.revDate); 
+  
 
   return (
-  <>
+  <div className={styles.EachReview}>
     <div>
-      <img className='revAvatars' src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" ></img>
-      <div className='revName'> {review.revName} </div>
+      <img className={styles.revAvatars} src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" ></img>
+      <div className={styleMedia.revName}> {review.revName} </div>
     </div>
-    <div className='ratingRow'>
+    <div className={styles.ratingRow}>
       <StarRatings
         rating={review.stars} 
         starRatedColor='#ffa700'
@@ -19,11 +21,11 @@ const  EachReview = ({ review }) => {
         name='rating'
         starDimension='15px'
         starSpacing='0px'
-      /><span className='revTitle'> {review.revTitle} </span>
+      /><span className={styles.revTitle}> {review.revTitle} </span>
     </div>
-    <div className='revDate'> {review.revDate} </div>
-    <p className='revBody'> {review.revBody} </p>
-  </>);
+    <div className={styles.revDate}> {review.formattedDate} </div>
+    <p className={styles.revBody}> {review.revBody} </p>
+  </div >);
 }; 
 
 export default EachReview; 
