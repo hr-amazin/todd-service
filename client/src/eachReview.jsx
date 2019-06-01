@@ -9,9 +9,9 @@ const  EachReview = ({ review }) => {
 
   return (
   <div className={styles.EachReview}>
-    <div>
+    <div className={styles.avatarRow}>
       <img className={styles.revAvatars} src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" ></img>
-      <div className={styleMedia.revName}> {review.revName} </div>
+      <div className={styles.revName}> {review.revName} </div>
     </div>
     <div className={styles.ratingRow}>
       <StarRatings
