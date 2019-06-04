@@ -4,7 +4,8 @@
 ## NPM ##
 npm
 npm-debug.log
-node_modules/
+node_modules
+.env
 
 pids
 *.pid
@@ -24,3 +25,4 @@ coverage
 build/
 dist/
 
+node_modules

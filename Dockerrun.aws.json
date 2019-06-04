@@ -1,0 +1,12 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "toddmurch/review-comp",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "4000"
+    }
+  ]
+}

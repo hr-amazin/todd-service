@@ -1,0 +1,103 @@
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom'; 
+import EachReview from './eachReview.jsx'; 
+import styles from '../../public/Reviews.css';
+import { compareReviewRating, getAvgRating } from '../helpers/helperFuncs.js'
+import axios from 'axios'; 
+
+class Reviews extends React.Component {
+
+  constructor(props){
+    super(props) 
+    this.state = { 
+      uuid: null, 
+      reviews: [], 
+      averageRating: null
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  } 
+
+  componentDidMount() { 
+    // axios.get('api/oneReview', { 
+    axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
+      params: { 
+        uuid: 1001
+      }
+    })
+    .then(reviews => { 
+      // console.log(`reviews procured db!`, reviews.data[0].uuid) 
+      // set default sort of topreviews.
+      reviews.data.sort(compareReviewRating); 
+      // console.log(reviews.data);
+      
+      console.log(getAvgRating(reviews.data));
+      
+      this.setState({ 
+        reviews: reviews.data, 
+        uuid: reviews.data[0].uuid, 
+        averageRating: getAvgRating(reviews.data)
+      })
+    })
+    .catch(err => console.log(`error retrieving reviews`))
+  } 
+
+  componentDidUpdate(prevProps, prevState) { 
+    if (this.props.uuid !== prevProps.uuid) { 
+      axios.get('http://review.us-east-2.elasticbeanstalk.com/api/oneReview', { 
+        params: { 
+          uuid: this.props.uuid
+        }
+      })
+      .then(reviews => { 
+        // console.log(`reviews procured db!`, reviews.data[0].uuid) 
+        // set default sort of topreviews.
+        reviews.data.sort(compareReviewRating);
+        this.setState({ 
+          reviews: reviews.data, 
+          uuid: reviews.data[0].uuid
+        })
+      })
+      .catch(err => console.log(`error retrieving reviews`))
+    }
+  }
+
+  handleChange(e) { 
+    if ( e.target.value === 'Most Recent') { 
+      let mostRecentRevs = [].concat(this.state.reviews)
+      mostRecentRevs.sort((a,b)=> new Date(b.revDate).getTime() - new Date(a.revDate).getTime());
+      console.log(mostRecentRevs);
+      this.setState({ 
+        reviews: mostRecentRevs
+      });
+    } else { 
+      let topReviews = [].concat(this.state.reviews); 
+      topReviews.sort(compareReviewRating);
+      this.setState({ 
+        reviews: topReviews
+      });
+    }
+  }
+
+  render(){  
+    const { reviews } = this.state; 
+
+    return ( 
+      
+      <>
+        <h4 className={styles.reviews}> Showing 1-{reviews.length} of {reviews.length} reviews </h4>
+          <div className={styles.sortForm}>
+            <form>
+              <select onChange={this.handleChange}> 
+                <option value='Top Reviews'>Top Reviews</option>
+                <option value='Most Recent'>Most Recent</option>
+              </select>
+            </form>
+          </div>
+            { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
+      </>
+    )}
+
+}
+window.Reviews = Reviews;
+// ReactDOM.render(<Reviews/>, document.getElementById('reviews'));
