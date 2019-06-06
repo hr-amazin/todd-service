@@ -1,4 +1,11 @@
 
+.reviewsContainer { 
+  display: flex; 
+  justify-content: space-around; 
+  padding-right: 350px;
+  padding-top: 24px;
+} 
+
 .reviews { 
   font-family: 'Roboto', sans-serif;
   margin-top: 15px; 
@@ -17,7 +24,9 @@
     align-items: center; 
     /* margin: 10px; 
     padding: 15px; */
-    margin-left: 16px;
+    margin-left: 16px; 
+    font-size: 13px;
+    word-wrap: break-word;
 } 
 
 .revAvatars { 
@@ -54,4 +63,22 @@
 .revDate { 
   grid-row: 3 / 3; 
   color: #555;
+}
+
+.chartTitle { 
+  font-size: 21px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.averageText { 
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+}
+
+.barChartContainer { 
+  width: 400px;
+  border-bottom: 1px #ddd solid;
+  padding-bottom: 0px;
+  padding-top: 15px;
 }

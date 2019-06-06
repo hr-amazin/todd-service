@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom'; 
 import EachReview from './eachReview.jsx'; 
+import BarChart from './barChart.jsx'; 
 import styles from '../../public/Reviews.css';
 import { compareReviewRating, getAvgRating } from '../helpers/helperFuncs.js'
 import axios from 'axios'; 
@@ -12,7 +13,7 @@ class Reviews extends React.Component {
     this.state = { 
       uuid: null, 
       reviews: [], 
-      averageRating: null
+      averageRating: 0
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -80,21 +81,28 @@ class Reviews extends React.Component {
   }
 
   render(){  
-    const { reviews } = this.state; 
+    const { reviews, averageRating } = this.state; 
 
     return ( 
-      
       <>
-        <h4 className={styles.reviews}> Showing 1-{reviews.length} of {reviews.length} reviews </h4>
-          <div className={styles.sortForm}>
-            <form>
-              <select onChange={this.handleChange}> 
-                <option value='Top Reviews'>Top Reviews</option>
-                <option value='Most Recent'>Most Recent</option>
-              </select>
-            </form>
-          </div>
-            { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
+      <div className={styles.reviewsContainer}>
+        <div className='barChart'>
+          <BarChart averageRating={ averageRating } reviews={ reviews } />
+        </div>
+        
+        <div>
+          <h4 className={styles.reviews}> Showing 1-{reviews.length} of {reviews.length} reviews </h4>
+            <div className={styles.sortForm}>
+              <form>
+                <select onChange={this.handleChange}> 
+                  <option value='Top Reviews'>Top Reviews</option>
+                  <option value='Most Recent'>Most Recent</option>
+                </select>
+              </form>
+            </div>
+              { reviews.map((review, i) => <EachReview key={i} review={ review } /> )}
+        </div>
+      </div>
       </>
     )}
 
